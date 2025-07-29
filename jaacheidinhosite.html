@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Já Acheidinhos | Ofertas Exclusivas Shopee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --accent: #FFE66D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .highlight-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .product-features {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .product-features li {
+            margin-bottom: 0.3rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .product-features li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .sales-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: var(--dark);
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .instagram-highlight {
+            margin: 1.5rem 0;
+        }
+        
+        .instagram-highlight a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Já Acheidinhos</div>
+            <p class="tagline">As melhores ofertas da Shopee, selecionadas para você!</p>
+            
+            <div class="instagram-highlight">
+                <a href="https://www.instagram.com/jaacheidinhos/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Siga-nos no Instagram @jaacheidinhos
+                </a>
+            </div>
+        </header>
+        
+        <div class="highlight-banner">
+            <h2>🔥 Ofertas Exclusivas por Tempo Limitado!</h2>
+            <p>Frete grátis em compras acima de R$ 99 | Descontos especiais</p>
+        </div>
+        
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="clothing">Roupas</button>
+            <button class="category-btn" data-category="electronics">Eletrônicos</button>
+            <button class="category-btn" data-category="home">Casa</button>
+            <button class="category-btn" data-category="supplements">Suplementos</button>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Produto 1 -->
+            <div class="product-card" data-category="home">
+                <div class="product-image">
+                    <div class="product-number">1</div>
+                    <div class="sales-badge">3K+ vendidos</div>
+                    <div class="discount-badge">-20%</div>
+                    <i class="fas fa-wine-bottle" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Kit Garrafas Premium</h3>
+                    <div class="product-price">R$ 49,90 <small style="text-decoration: line-through; color: #999; font-weight: normal;">R$ 62,90</small></div>
+                    <ul class="product-features">
+                        <li>Conjunto com 3 garrafas de 500ml</li>
+                        <li>Material: Vidro resistente</li>
+                        <li>Livre de BPA</li>
+                        <li>Design ergonômico</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3ft5FArTmK" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 2 -->
+            <div class="product-card" data-category="home">
+                <div class="product-image">
+                    <div class="product-number">2</div>
+                    <div class="sales-badge">Mais vendido</div>
+                    <i class="fas fa-highlighter" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Marcadores Canetas Coloridas</h3>
+                    <div class="product-price">R$ 19,90</div>
+                    <ul class="product-features">
+                        <li>Kit com 12 cores vibrantes</li>
+                        <li>Ponta fina 1.0mm</li>
+                        <li>Tinta à base de água</li>
+                        <li>Não vaza</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3qCVRTqqRN" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 3 -->
+            <div class="product-card" data-category="electronics">
+                <div class="product-image">
+                    <div class="product-number">3</div>
+                    <div class="sales-badge">Novidade</div>
+                    <i class="fas fa-headphones" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Fone Bluetooth TWS</h3>
+                    <div class="product-price">R$ 129,90 <small style="text-decoration: line-through; color: #999; font-weight: normal;">R$ 159,90</small></div>
+                    <ul class="product-features">
+                        <li>Bateria de 24h (case + fones)</li>
+                        <li>Bluetooth 5.3</li>
+                        <li>À prova d'água IPX5</li>
+                        <li>Controle por toque</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3LGEqYskSI" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 4 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">4</div>
+                    <div class="sales-badge">Kit promocional</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Kit Regatas Básicas</h3>
+                    <div class="product-price">R$ 59,90</div>
+                    <ul class="product-features">
+                        <li>Conjunto com 3 regatas</li>
+                        <li>100% algodão</li>
+                        <li>Cores variadas</li>
+                        <li>Toque macio</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3VZf2rs77L" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 5 -->
+            <div class="product-card" data-category="home">
+                <div class="product-image">
+                    <div class="product-number">5</div>
+                    <div class="sales-badge">Destaque</div>
+                    <i class="fas fa-star" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">BobGoods - Organizador</h3>
+                    <div class="product-price">R$ 34,90</div>
+                    <ul class="product-features">
+                        <li>Material resistente</li>
+                        <li>Compartimentos práticos</li>
+                        <li>Ideal para viagens</li>
+                        <li>Design compacto</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/30dORwu18G" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 6 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">6</div>
+                    <div class="sales-badge">Proteção capilar</div>
+                    <i class="fas fa-moon" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Touca de Cetim</h3>
+                    <div class="product-price">R$ 24,90</div>
+                    <ul class="product-features">
+                        <li>Protege cabelos cacheados</li>
+                        <li>Reduz frizz</li>
+                        <li>Confortável para dormir</li>
+                        <li>Material suave</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3Awof21DVq" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 7 -->
+            <div class="product-card" data-category="home">
+                <div class="product-image">
+                    <div class="product-number">7</div>
+                    <div class="sales-badge">Saúde</div>
+                    <i class="fas fa-wind" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Umidificador de Ar</h3>
+                    <div class="product-price">R$ 89,90 <small style="text-decoration: line-through; color: #999; font-weight: normal;">R$ 119,90</small></div>
+                    <ul class="product-features">
+                        <li>Capacidade: 300ml</li>
+                        <li>Nebulização ajustável</li>
+                        <li>Luz noturna suave</li>
+                        <li>Silencioso</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/30dOSj1qqp" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 8 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">8</div>
+                    <div class="sales-badge">Tendência</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Calça Ballon Feminina</h3>
+                    <div class="product-price">R$ 79,90</div>
+                    <ul class="product-features">
+                        <li>Cintura alta</li>
+                        <li>Tecido leve e respirável</li>
+                        <li>Modelo amplo</li>
+                        <li>Disponível em 5 cores</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3VZf3dzwpw" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 9 -->
+            <div class="product-card" data-category="supplements">
+                <div class="product-image">
+                    <div class="product-number">9</div>
+                    <div class="sales-badge">Top vendas</div>
+                    <i class="fas fa-dumbbell" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Creatina DarkLab - 300g</h3>
+                    <div class="product-price">R$ 99,90</div>
+                    <ul class="product-features">
+                        <li>Creatina monohidratada</li>
+                        <li>Puro pó micronizado</li>
+                        <li>Aumento de força e massa</li>
+                        <li>Sem aditivos</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3LGErL0aAv" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 10 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">10</div>
+                    <div class="sales-badge">Conjunto</div>
+                    <i class="fas fa-socks" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Kit Meias Esportivas</h3>
+                    <div class="product-price">R$ 29,90</div>
+                    <ul class="product-features">
+                        <li>Kit com 5 pares</li>
+                        <li>Tecido respirável</li>
+                        <li>Proteção anti-odor</li>
+                        <li>Canelo médio</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/3qCVSFygA2" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 11 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">11</div>
+                    <div class="sales-badge">60K+ vendidos</div>
+                    <i class="fas fa-socks" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Meia Térmica de Lã</h3>
+                    <div class="product-price">R$ 14,99 <small style="text-decoration: line-through; color: #999; font-weight: normal;">R$ 24,90</small></div>
+                    <ul class="product-features">
+                        <li>Sola antiderrapante</li>
+                        <li>Unissex (criança e adulto)</li>
+                        <li>Forrada grossa</li>
+                        <li>Material quentinho</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/1LVAUQ5z6y" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 12 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">12</div>
+                    <div class="sales-badge">100K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Legging Flanelada Grossa</h3>
+                    <div class="product-price">R$ 28,99</div>
+                    <ul class="product-features">
+                        <li>Peluciada por dentro</li>
+                        <li>Costura reforçada</li>
+                        <li>Modeladora</li>
+                        <li>Zero transparência</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/1Voagj5Lm1" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 13 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">13</div>
+                    <div class="sales-badge">100K+ vendidos</div>
+                    <i class="fas fa-female" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Kit 3 Sutiãs Reforçados</h3>
+                    <div class="product-price">R$ 18,75</div>
+                    <ul class="product-features">
+                        <li>Microfibra com bojo</li>
+                        <li>Do tamanho P ao GG</li>
+                        <li>Conforto máximo</li>
+                        <li>Cores básicas</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/1g80t24iR4" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 14 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">14</div>
+                    <div class="sales-badge">60K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Calça Jeans Wide Leg</h3>
+                    <div class="product-price">R$ 64,90</div>
+                    <ul class="product-features">
+                        <li>Marmorizada</li>
+                        <li>Cintura alta</li>
+                        <li>Sem lycra</li>
+                        <li>Modelo pantalona</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/1qRR5L4567" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 15 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">15</div>
+                    <div class="sales-badge">100K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">2 Legging Suplex Lisa</h3>
+                    <div class="product-price">R$ 42,50</div>
+                    <ul class="product-features">
+                        <li>Zero transparência</li>
+                        <li>Modeladora</li>
+                        <li>Alta compressão</li>
+                        <li>Kit com 2 unidades</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/8fHlDte4ES" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 16 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">16</div>
+                    <div class="sales-badge">30K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Calça Wide Leg Premium</h3>
+                    <div class="product-price">R$ 64,90</div>
+                    <ul class="product-features">
+                        <li>100% algodão</li>
+                        <li>Marmorizada</li>
+                        <li>Cintura alta</li>
+                        <li>Modelo pantalona</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/8pbBQCdQtV" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 17 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">17</div>
+                    <div class="sales-badge">10K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Cardigan Xadrez Tricô</h3>
+                    <div class="product-price">R$ 49,89</div>
+                    <ul class="product-features">
+                        <li>Casaco kimono</li>
+                        <li>Moda inverno</li>
+                        <li>Confortável</li>
+                        <li>Vários tamanhos</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/8zubcVcnYY" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 18 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">18</div>
+                    <div class="sales-badge">30K+ vendidos</div>
+                    <i class="fas fa-socks" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Kit 12 Pares de Meia</h3>
+                    <div class="product-price">R$ 10,00</div>
+                    <ul class="product-features">
+                        <li>Soquete unissex</li>
+                        <li>3 cores diferentes</li>
+                        <li>Canelo curto</li>
+                        <li>Material resistente</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/9AE1oocADb" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 19 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">19</div>
+                    <div class="sales-badge">100K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Blusa Manga Longa Gola V</h3>
+                    <div class="product-price">R$ 23,79</div>
+                    <ul class="product-features">
+                        <li>Segunda pele</li>
+                        <li>Básica</li>
+                        <li>100% algodão</li>
+                        <li>Várias cores</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/8024QfgbaO" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Produto 20 -->
+            <div class="product-card" data-category="clothing">
+                <div class="product-image">
+                    <div class="product-number">20</div>
+                    <div class="sales-badge">20K+ vendidos</div>
+                    <i class="fas fa-tshirt" style="font-size: 3rem; color: #ccc;"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Blusa Cacharrel 100% Algodão</h3>
+                    <div class="product-price">R$ 25,90</div>
+                    <ul class="product-features">
+                        <li>Manga longa</li>
+                        <li>Gola alta</li>
+                        <li>Confortável</li>
+                        <li>Básico para inverno</li>
+                    </ul>
+                    <a href="https://s.shopee.com.br/8ALUcyfyFR" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="highlight-banner" style="margin-top: 3rem; background: var(--dark);">
+            <h2 style="color: white;">✉️ Receba Ofertas Exclusivas</h2>
+            <p style="color: #eee;">Cadastre-se e receba descontos especiais diretamente no seu e-mail</p>
+            <form style="margin-top: 1rem; display: flex; max-width: 500px; margin: 1rem auto;">
+                <input type="email" placeholder="Seu melhor e-mail" style="flex: 1; padding: 0.8rem; border: none; border-radius: 50px 0 0 50px;">
+                <button type="submit" style="background: var(--accent); color: var(--dark); border: none; padding: 0 1.5rem; border-radius: 0 50px 50px 0; font-weight: bold; cursor: pointer;">Enviar</button>
+            </form>
+        </div>
+        
+        <footer>
+            <div class="social-links">
+                <a href="https://www.instagram.com/jaacheidinhos/" target="_blank" title="Siga-nos no Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div style="margin: 1rem 0;">
+                <a href="https://www.instagram.com/jaacheidinhos/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">
+                    <i class="fab fa-instagram" style="margin-right: 5px;"></i> @jaacheidinhos
+                </a>
+            </div>
+            
+            <p>© 2023 Já Acheidinhos - Todos os direitos reservados</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Este site contém links afiliados que geram comissões para o proprietário</p>
+        </footer>
+    </div>
+
+    <script>
+        // Filtro de categorias
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.dataset.category;
+                const products = document.querySelectorAll('.product-card');
+                
+                products.forEach(product => {
+                    if (category === 'all' || product.dataset.category === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Animação ao rolar a página
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const logo = document.querySelector('.logo');
+            
+            if (scrollPosition > 100) {
+                logo.style.transform = 'scale(0.9)';
+                logo.style.transition = 'transform 0.3s ease';
+            } else {
+                logo.style.transform = 'scale(1)';
+            }
+        });
+    </script>
+</body>
+</html>
